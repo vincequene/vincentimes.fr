@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VincenTimes</title>
+  <meta name="description" content="VincenTimes — créateur audiovisuel">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-primary: #f8f9fa;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --bg-hover: rgba(255, 255, 255, 0.95);
+      --border-subtle: rgba(0, 0, 0, 0.05);
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --accent-blue: #0a84ff;
+      --accent-hover: #0066cc;
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'SF Pro Display', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
+      gap: 3rem;
+    }
+
+    .logo {
+      font-size: clamp(2.75rem, 12vw, 6rem);
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      text-align: center;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-hover);
+    }
+
+    .icon {
+      font-size: 2rem;
+      color: rgba(10, 132, 255, 0.4);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      order: 2;
+    }
+
+    .card-content {
+      flex: 1;
+      order: 1;
+    }
+
+    .card:hover .icon {
+      color: var(--accent-hover);
+      transform: scale(1.3);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-link {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .card.priority-high {
+      grid-column: span 2;
+      min-height: 200px;
+    }
+
+    .card.priority-medium {
+      min-height: 180px;
+    }
+
+    .card.priority-low {
+      min-height: 160px;
+    }
+
+    .footer {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.025em;
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .card.priority-high {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bento {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .icon {
+        order: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="logo">VincenTimes</h1>
+
+  <div class="bento">
+    <a href="https://ludokino.fr" class="card priority-high" target="_blank">
+      <div class="card-content">
+        <div class="card-title">Ludokino</div>
+        <div class="card-link">Pop culture média</div>
+      </div>
+      <i class="fas fa-video icon"></i>
+    </a>
+
+    <a href="https://toonesque.com" class="card priority-high" target="_blank">
+      <div class="card-content">
+        <div class="card-title">toonesque.</div>
+        <div class="card-link">Animation analyse</div>
+      </div>
+      <i class="fas fa-play-circle icon"></i>
+    </a>
+
+    <a href="https://cabinet26.com" class="card priority-high" target="_blank">
+      <div class="card-content">
+        <div class="card-title">cabinet26</div>
+        <div class="card-link">Direction créative</div>
+      </div>
+      <i class="fas fa-palette icon"></i>
+    </a>
+
+    <a href="https://bsky.app/profile/vincetimes.bsky.social" class="card priority-medium" target="_blank">
+      <div class="card-content">
+        <div class="card-title">Bluesky</div>
+        <div class="card-link">@VincenTimes.fr</div>
+      </div>
+      <i class="fab fa-bluesky icon"></i>
+    </a>
+
+    <a href="https://www.youtube.com/@vincentimes" class="card priority-medium" target="_blank">
+      <div class="card-content">
+        <div class="card-title">YouTube</div>
+        <div class="card-link">@vincentimes</div>
+      </div>
+      <i class="fab fa-youtube icon"></i>
+    </a>
+
+    <a href="https://www.twitch.tv/vincentimes" class="card priority-medium" target="_blank">
+      <div class="card-content">
+        <div class="card-title">Twitch</div>
+        <div class="card-link">@vincentimes</div>
+      </div>
+      <i class="fab fa-twitch icon"></i>
+    </a>
+
+    <a href="https://www.instagram.com/vincentimes" class="card priority-low" target="_blank">
+      <div class="card-content">
+        <div class="card-title">Instagram</div>
+        <div class="card-link">@vincentimes</div>
+      </div>
+      <i class="fab fa-instagram icon"></i>
+    </a>
+
+    <a href="https://twitter.com/vincentimes" class="card priority-low" target="_blank">
+      <div class="card-content">
+        <div class="card-title">Twitter/X</div>
+        <div class="card-link">@vincentimes</div>
+      </div>
+      <i class="fab fa-x-twitter icon"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/@vincentimesfr" class="card priority-low" target="_blank">
+      <div class="card-content">
+        <div class="card-title">TikTok</div>
+        <div class="card-link">@vincentimesfr</div>
+      </div>
+      <i class="fab fa-tiktok icon"></i>
+    </a>
+
+    <a href="mailto:contact@vincentimes.fr" class="card priority-low">
+      <div class="card-content">
+        <div class="card-title">Contact</div>
+        <div class="card-link">contact@vincentimes.fr</div>
+      </div>
+      <i class="fas fa-envelope icon"></i>
+    </a>
+  </div>
+
+  <p class="footer">© 2026 VincenTimes</p>
+</body>
+</html>
