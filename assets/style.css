@@ -98,17 +98,26 @@ body {
 }
 
 /* Trame de points en quinconce, uniforme et discrète sur toute la hauteur
-   (fixée à l'écran : elle reste présente pendant le défilement) */
+   (fixée à l'écran : elle reste présente pendant le défilement).
+   Elle défile lentement en diagonale, en boucle, comme un fond de cartoon :
+   le calque déborde d'une case (28 px) et glisse d'exactement une case,
+   la boucle est donc invisible. Animée en transform (GPU, pas de repaint). */
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
+  inset: -28px;
   z-index: -2;
   pointer-events: none;
   background:
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 0 0 / 28px 28px,
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 14px 14px / 28px 28px;
   opacity: 0.22;
+  will-change: transform;
+  animation: trame-scroll 4s linear infinite;
+}
+@keyframes trame-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(28px, 28px, 0); }
 }
 /* Grain par-dessus tout le fond */
 body::after {
@@ -133,6 +142,19 @@ a { color: inherit; }
 
 /* ---------- Décor : nuages ---------- */
 
+/* Bande de ciel qui contient les nuages et coupe ce qui dépasse :
+   un nuage qui sort de l'écran ne crée jamais de défilement horizontal */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 14rem;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .doodle {
   position: absolute;
   pointer-events: none;
@@ -140,13 +162,42 @@ a { color: inherit; }
 }
 .cloud-1 { top: 2.5rem; left: max(1rem, calc(50% - 560px)); width: 130px; }
 .cloud-2 { top: 1.5rem; right: max(0.5rem, calc(50% - 600px)); width: 100px; }
+.cloud-3, .cloud-4, .cloud-5 { display: none; }
 @media (max-width: 959px) {
   .cloud-1 { top: 0.6rem; left: 0.6rem; width: 66px; }
   .cloud-2 { top: 1.4rem; right: 0.8rem; width: 54px; }
 }
 .doodle .float { animation: float 7s ease-in-out infinite; transform-origin: center; }
 .cloud-2 .float { animation-duration: 9s; animation-delay: -3s; }
+.cloud-3 .float { animation-duration: 8s; animation-delay: -1s; }
+.cloud-4 .float { animation-duration: 10s; animation-delay: -5s; }
+.cloud-5 .float { animation-duration: 6s; animation-delay: -2s; }
 @keyframes float { 50% { transform: translate(8px, -5px); } }
+
+/* Les nuages traversent l'écran lentement : ils apparaissent en fondu d'un
+   côté, dérivent, disparaissent de l'autre, puis reviennent. Délais négatifs
+   pour qu'ils soient déjà en route au chargement. Sans animation (réglage
+   « réduire les animations »), ils restent à leur place d'origine. */
+@media (prefers-reduced-motion: no-preference) {
+  .cloud-1, .cloud-2, .cloud-3, .cloud-4, .cloud-5 { left: 0; right: auto; }
+  .cloud-3, .cloud-4, .cloud-5 { display: block; }
+  .cloud-1 { animation: drift 70s linear infinite; animation-delay: -12s; }
+  .cloud-2 { animation: drift 95s linear infinite; animation-delay: -60s; }
+  .cloud-3 { top: 6.5rem; width: 64px; opacity: 0.85; animation: drift 120s linear infinite; animation-delay: -35s; }
+  .cloud-4 { top: 0.4rem; width: 84px; animation: drift 82s linear infinite; animation-delay: -74s; }
+  .cloud-5 { top: 4.2rem; width: 48px; animation: drift 105s linear infinite; animation-delay: -88s; }
+  @media (max-width: 959px) {
+    .cloud-3 { top: 3.6rem; width: 40px; }
+    .cloud-4 { top: 0.2rem; width: 46px; }
+    .cloud-5 { top: 2.6rem; width: 32px; }
+  }
+}
+@keyframes drift {
+  0%   { transform: translateX(-140px); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translateX(calc(100vw + 20px)); opacity: 0; }
+}
 
 /* ---------- Mise en page ---------- */
 
@@ -321,6 +372,25 @@ a.sketch:active { transform: scale(0.97); }
   font-size: 15px;
   letter-spacing: 0.12em;
   fill: var(--ink);
+}
+/* Faux fixe (line boil) : le texte du badge frémit image par image,
+   ~8 images/s, en alternant trois tremblés de bruit différent */
+@media (prefers-reduced-motion: no-preference) {
+  .avatar-ring text { animation: boil 0.375s steps(1, end) infinite; }
+}
+@keyframes boil {
+  0%      { filter: url(#boil-1); }
+  33.33%  { filter: url(#boil-2); }
+  66.66%  { filter: url(#boil-3); }
+}
+/* Faux fixe du logo VincenTimes */
+@media (prefers-reduced-motion: no-preference) {
+  .hero .logo { animation: boil-logo 0.75s steps(1, end) infinite; }  /* ~4 images/s, plus posé que le badge */
+}
+@keyframes boil-logo {
+  0%      { filter: url(#boil-logo-1); }
+  33.33%  { filter: url(#boil-logo-2); }
+  66.66%  { filter: url(#boil-logo-3); }
 }
 .avatar-ring a:hover text { fill: var(--red); }
 .avatar-ring a text { text-decoration: none; }
@@ -705,6 +775,14 @@ a.sketch:active { transform: scale(0.97); }
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;
+  }
+  /* Au survol, plus de cartes qui penchent ni d'icônes qui tournent :
+     seuls les changements de couleur restent */
+  a.sketch:hover, a.sketch:active,
+  li:nth-child(even) > a.sketch:hover,
+  .link:hover svg, .socials a:hover,
+  .feature-cta:hover .arrow, .pro:hover .arrow {
+    transform: none !important;
   }
 }
 
