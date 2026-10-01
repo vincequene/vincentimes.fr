@@ -185,6 +185,7 @@ a { color: inherit; }
     padding: 0 2rem;
   }
   .page.home .side {
+    gap: 1.8rem;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -292,52 +293,49 @@ a.sketch:active { transform: scale(0.97); }
   text-underline-offset: 4px;
 }
 
-/* Avatar (dessin de Popuru) : autocollant rond, bord crème découpé,
-   contour au crayon par-dessus */
+/* Avatar (dessin de Popuru) : autocollant découpé à la silhouette
+   (bordure crème + trait d'encre précalculés dans l'image), avec le crédit
+   qui en fait le tour comme une étiquette */
 .avatar {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-  margin: 0 0 1.1rem;
-}
-.avatar-pic {
   position: relative;
-  display: block;
-  width: 132px;
-  height: 132px;
-  border-radius: 50%;
-  transform: rotate(-4deg);
-  box-shadow: 0 0 0 6px var(--cream), 7px 8px 0 5px var(--smudge);
+  width: 200px;
+  height: 248px;
+  margin: 0 auto 0.4rem;
 }
-.avatar-pic img {
-  display: block;
+.avatar img {
+  position: absolute;
+  left: 26px;
+  top: 21px;
+  width: 148px;
+  height: 196px;
+  transform: rotate(-3deg);
+  filter: drop-shadow(6px 7px 0 var(--smudge));
+}
+.avatar-ring {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+  overflow: visible;
+  transform: rotate(-3deg);
 }
-.avatar-pic::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 2.4px solid var(--ink);
-  outline: 1.2px solid rgba(43, 23, 18, 0.45);
-  outline-offset: -5px;
-  filter: url(#pencil);
-  pointer-events: none;
+.avatar-ring .ring-tape {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 17px;
+  filter: drop-shadow(2px 2px 0 var(--smudge));
 }
-.avatar figcaption {
-  font-size: 0.92rem;
-  color: var(--ink-soft);
+.avatar-ring text {
+  font-family: var(--font-hand);
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  fill: var(--ink);
 }
-.avatar figcaption a { color: var(--ink); text-underline-offset: 3px; }
-.avatar figcaption a:hover { color: var(--red); text-decoration: underline wavy; }
+.avatar-ring a:hover text { fill: var(--red); }
+.avatar-ring a:focus-visible { outline: none; }
+.avatar-ring a:focus-visible text { fill: var(--red); text-decoration: underline; }
 @media (min-width: 960px) {
-  .page.home .avatar { align-items: flex-start; }
-  .page.home .avatar-pic { width: 150px; height: 150px; }
-  .page.home .avatar figcaption { padding-left: 0.4rem; }
+  .page.home .avatar { margin-left: -14px; }
 }
 
 /* ---------- Titres de section : étiquettes collées ---------- */

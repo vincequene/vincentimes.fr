@@ -124,13 +124,18 @@
     <aside class="side">
       <header class="hero reveal">
         <figure class="avatar">
-          <span class="avatar-pic">
-            <picture>
-              <source srcset="/assets/img/avatar.webp" type="image/webp">
-              <img src="/assets/img/avatar.jpg" width="240" height="240" alt="Vince Quêne, dessiné par Popuru : casquette, cheveux bruns, sourire en coin">
-            </picture>
-          </span>
-          <figcaption>dessin : <a href="https://popuru.carrd.co/" target="_blank" rel="noopener">Popuru</a></figcaption>
+          <picture>
+            <source srcset="/assets/img/avatar-sticker.webp" type="image/webp">
+            <img src="/assets/img/avatar-sticker.png" width="148" height="196" alt="Vince Quêne dessiné par Popuru : casquette, cheveux bruns, sourire en coin">
+          </picture>
+          <!-- Crédit en étiquette qui fait le tour de l'autocollant -->
+          <svg class="avatar-ring" viewBox="0 0 200 248">
+            <defs><path id="ring" d="M100 7 A92 117 0 1 1 100 241 A92 117 0 1 1 100 7"/></defs>
+            <ellipse class="ring-tape" cx="100" cy="124" rx="92" ry="117"/>
+            <a href="https://popuru.carrd.co/" target="_blank" rel="noopener" aria-label="Avatar dessiné par Popuru">
+              <text dy="4.6"><textPath href="#ring" textLength="657" lengthAdjust="spacing">✦ dessin par Popuru ✦ dessin par Popuru </textPath></text>
+            </a>
+          </svg>
         </figure>
         <h1 class="logo">Vincen<span>Times</span></h1>
         <div class="separator" aria-hidden="true"></div>
