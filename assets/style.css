@@ -366,7 +366,7 @@ a.sketch:active { transform: scale(0.97); }
   75% { transform: translate(-1px, 0); }
 }
 .feature-pitch { margin-top: 1.1rem; max-width: 34ch; font-size: 1.28rem; line-height: 1.3; }
-.feature-quote { margin-top: 0.4rem; font-size: 1.12rem; color: rgba(255, 255, 255, 0.85); }
+.feature-quote { margin-top: 0.15rem; font-size: 1rem; color: rgba(255, 255, 255, 0.7); }
 
 .feature-actions {
   display: flex;
