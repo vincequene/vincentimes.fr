@@ -124,16 +124,22 @@
     <aside class="side">
       <header class="hero reveal">
         <figure class="avatar">
-          <picture>
-            <source srcset="/assets/img/avatar-sticker.webp" type="image/webp">
-            <img src="/assets/img/avatar-sticker.png" width="148" height="196" alt="Vince Quêne dessiné par Popuru : casquette, cheveux bruns, sourire en coin">
-          </picture>
-          <!-- Crédit en étiquette qui fait le tour de l'autocollant -->
+          <span class="avatar-clip">
+            <picture>
+              <source srcset="/assets/img/avatar-sticker.webp" type="image/webp">
+              <img src="/assets/img/avatar-sticker.png" width="144" height="191" alt="Vince Quêne dessiné par Popuru : casquette, cheveux bruns, sourire en coin">
+            </picture>
+          </span>
+          <!-- Badge façon étiquette de bouteille : arc du haut + arc du bas lu à l'endroit -->
           <svg class="avatar-ring" viewBox="0 0 236 236">
-            <defs><path id="ring" d="M118 14 A104 104 0 1 1 118 222 A104 104 0 1 1 118 14"/></defs>
+            <defs>
+              <path id="ring-top" d="M14 118 A104 104 0 0 1 222 118"/>
+              <path id="ring-bottom" d="M14 118 A104 104 0 0 0 222 118"/>
+            </defs>
             <circle class="ring-tape" cx="118" cy="118" r="104"/>
+            <text dy="5"><textPath href="#ring-top" startOffset="50%" text-anchor="middle">✦ depuis 1998 ✦</textPath></text>
             <a href="https://popuru.carrd.co/" target="_blank" rel="noopener" aria-label="Avatar dessiné par Popuru">
-              <text dy="4.6"><textPath href="#ring" textLength="651" lengthAdjust="spacing">✦ dessin par Popuru ✦ dessin par Popuru </textPath></text>
+              <text dy="5"><textPath href="#ring-bottom" startOffset="50%" text-anchor="middle">dessin par Popuru</textPath></text>
             </a>
           </svg>
         </figure>
