@@ -22,12 +22,13 @@
   font-weight: 400;
   font-display: swap;
 }
-/* Typo de toonesque. — déposer le fichier dans assets/fonts/ */
+/* Typo de toonesque. (Yann Le Coroller). La Bold s'ajoutera ici :
+   AlteHaasGroteskBold.woff2, font-weight: 700. En attendant, le
+   navigateur épaissit la Regular. */
 @font-face {
   font-family: 'Alte Haas Grotesk';
-  src: url('fonts/AlteHaasGroteskBold.woff2') format('woff2'),
-       url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
-  font-weight: 700;
+  src: url('fonts/AlteHaasGroteskRegular.woff2') format('woff2');
+  font-weight: 400;
   font-display: swap;
 }
 

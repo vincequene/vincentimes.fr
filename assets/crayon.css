@@ -1,7 +1,9 @@
 /* ==========================================================
    VincenTimes — variante « crayon »
-   Papier crème, pastels au crayon de couleur, contours tremblés.
-   Les contours passent par le filtre SVG #rough défini dans la page.
+   Papier crème, coloriage aux crayons de couleur,
+   contours au crayon à papier (graphite grainé, trait repassé).
+   Filtres SVG #rough (coloriage) et #pencil / #pencil-text (traits)
+   définis dans la page.
    ========================================================== */
 
 @font-face {
@@ -16,11 +18,13 @@
   font-weight: 400;
   font-display: swap;
 }
+/* Typo de toonesque. (Yann Le Coroller). La Bold s'ajoutera ici :
+   AlteHaasGroteskBold.woff2, font-weight: 700. En attendant, le
+   navigateur épaissit la Regular. */
 @font-face {
   font-family: 'Alte Haas Grotesk';
-  src: url('fonts/AlteHaasGroteskBold.woff2') format('woff2'),
-       url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
-  font-weight: 700;
+  src: url('fonts/AlteHaasGroteskRegular.woff2') format('woff2');
+  font-weight: 400;
   font-display: swap;
 }
 
@@ -29,9 +33,11 @@
 
   --paper: #fbf3de;
   --paper-hi: #fffaf0;
-  --ink: #3d2c26;
-  --ink-soft: #6e5a50;
-  --muted: #9a8577;
+  --ink: #34322f;
+  --ink-soft: #625d57;
+  --muted: #8d877e;
+  --graphite: #4b4a4f;
+  --smudge: rgba(70, 68, 72, 0.16);
 
   --blue: #3a8ee6;
   --sky: #a6dbf5;
@@ -163,32 +169,44 @@ a { color: inherit; }
   .page.home .footer { order: 10; }
 }
 
-/* ---------- Le trait crayonné ----------
-   ::before porte le fond, le contour et l'ombre, et passe dans le
-   filtre #rough. Le contenu reste net au-dessus. */
+/* ---------- Le trait au crayon ----------
+   ::before = coloriage (déborde un peu, comme à la main) + estompe,
+   ::after  = contour graphite repassé deux fois, grainé par #pencil.
+   Le contenu reste net au-dessus. */
 
 .sketch {
   --fill: var(--paper-hi);
-  --line: var(--ink);
   --c: var(--yellow);
   position: relative;
   isolation: isolate;
   transition: transform 0.35s var(--pop);
 }
-.sketch::before {
+.sketch::before,
+.sketch::after {
   content: '';
   position: absolute;
-  inset: 0;
   z-index: -1;
-  border: 2.5px solid var(--line);
   border-radius: var(--blob);
+  pointer-events: none;
+}
+.sketch::before {
+  inset: 4px -3px -3px 5px;
   background: var(--hatch), var(--grain), var(--fill);
   background-size: auto, 140px 140px, auto;
-  box-shadow: 4px 5px 0 -1px var(--line);
+  box-shadow: 6px 7px 0 -1px var(--smudge);
   filter: url(#rough);
   transition: background-color 0.25s var(--ease);
 }
-.sketch:nth-child(even)::before { border-radius: var(--blob-2); }
+.sketch::after {
+  inset: 0;
+  border: 1.8px solid var(--graphite);
+  outline: 1.1px solid rgba(75, 74, 79, 0.5);
+  outline-offset: -4px;
+  filter: url(#pencil);
+}
+.sketch:nth-child(even)::before,
+.sketch:nth-child(even)::after { border-radius: var(--blob-2); }
+li:nth-child(even) > .sketch::before { inset: 3px 4px -4px -3px; }
 
 a.sketch:hover { transform: rotate(-1.2deg) translateY(-3px); }
 li:nth-child(even) > a.sketch:hover { transform: rotate(1.2deg) translateY(-3px); }
@@ -206,10 +224,10 @@ a.sketch:active { transform: scale(0.97); }
   line-height: 1.05;
   letter-spacing: -0.01em;
   color: #fff;
-  -webkit-text-stroke: 7px var(--ink);
+  -webkit-text-stroke: 3.5px var(--graphite);
   paint-order: stroke fill;
-  text-shadow: 4px 5px 0 var(--ink);
-  filter: url(#rough-soft);
+  text-shadow: 4px 5px 0 var(--smudge);
+  filter: url(#pencil-text);
 }
 .logo span { color: var(--sky); }
 
@@ -252,7 +270,7 @@ a.sketch:active { transform: scale(0.97); }
   gap: 1.5rem;
   padding: clamp(1.5rem, 5vw, 2.2rem);
 }
-.feature::before { box-shadow: 6px 7px 0 -1px var(--line); }
+.feature::before { box-shadow: 8px 9px 0 -1px var(--smudge); }
 
 .tag {
   align-self: flex-start;
@@ -260,8 +278,9 @@ a.sketch:active { transform: scale(0.97); }
   align-items: center;
   gap: 0.45rem;
   padding: 0.1rem 0.6rem;
-  border: 2px solid var(--ink);
+  border: 1.6px solid var(--graphite);
   border-radius: 6px 10px 7px 9px;
+  filter: url(#pencil-text);
   background: var(--paper-hi);
   font-size: 0.95rem;
   transform: rotate(-2deg);
@@ -282,10 +301,10 @@ a.sketch:active { transform: scale(0.97); }
   line-height: 0.92;
   letter-spacing: -0.035em;
   color: #fff;
-  -webkit-text-stroke: 6px var(--ink);
+  -webkit-text-stroke: 3.5px var(--graphite);
   paint-order: stroke fill;
-  text-shadow: 4px 5px 0 var(--ink);
-  filter: url(#rough-soft);
+  text-shadow: 5px 6px 0 var(--smudge);
+  filter: url(#pencil-text);
 }
 .feature-pitch { margin-top: 0.9rem; max-width: 34ch; font-size: 1.25rem; line-height: 1.3; }
 .feature-quote { margin-top: 0.5rem; font-size: 1.05rem; color: var(--ink-soft); }
@@ -306,8 +325,9 @@ a.sketch:active { transform: scale(0.97); }
   font-size: 1.25rem;
   text-decoration: none;
 }
-.feature-cta::after { content: '→'; transition: transform 0.3s var(--pop); }
-.feature-cta:hover::after { transform: translateX(4px); }
+/* ::after sert au contour : les flèches sont de vrais éléments */
+.arrow { display: inline-block; transition: transform 0.3s var(--pop); }
+.feature-cta:hover .arrow { transform: translateX(4px); }
 
 .socials { display: flex; gap: 0.5rem; list-style: none; }
 .socials a {
@@ -337,23 +357,20 @@ a.sketch:active { transform: scale(0.97); }
   place-items: center;
   width: 48px; height: 48px;
   flex-shrink: 0;
-  border: 2.5px solid var(--ink);
+  border: 1.8px solid var(--graphite);
   border-radius: 50% 45% 52% 48% / 48% 52% 45% 50%;
-  background: var(--ink);
-  font-size: 1.05rem;
-  color: var(--paper-hi);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px rgba(75, 74, 79, 0.45);
+  font-size: 1.15rem;
+  color: var(--ink);
+  filter: url(#pencil-text);
   transform: rotate(-4deg);
 }
 .pro-text { display: flex; flex-direction: column; min-width: 0; }
 .pro-name { font-size: 1.4rem; line-height: 1.15; }
 .pro-desc { font-size: 1.05rem; color: var(--ink-soft); }
-.pro::after {
-  content: '↗';
-  margin-left: auto;
-  font-size: 1.3rem;
-  transition: transform 0.3s var(--pop);
-}
-.pro:hover::after { transform: translate(3px, -3px); }
+.pro .arrow { margin-left: auto; font-size: 1.3rem; }
+.pro:hover .arrow { transform: translate(3px, -3px); }
 
 /* ---------- Réseaux ---------- */
 
