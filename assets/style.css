@@ -776,6 +776,14 @@ a.sketch:active { transform: scale(0.97); }
     animation: none !important;
     transition: none !important;
   }
+  /* Au survol, plus de cartes qui penchent ni d'icônes qui tournent :
+     seuls les changements de couleur restent */
+  a.sketch:hover, a.sketch:active,
+  li:nth-child(even) > a.sketch:hover,
+  .link:hover svg, .socials a:hover,
+  .feature-cta:hover .arrow, .pro:hover .arrow {
+    transform: none !important;
+  }
 }
 
 @media (max-width: 340px) {
