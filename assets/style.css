@@ -157,6 +157,22 @@ a { color: inherit; }
 .cloud-2 .float { animation-duration: 9s; animation-delay: -3s; }
 @keyframes float { 50% { transform: translate(8px, -5px); } }
 
+/* Les nuages traversent l'écran lentement : ils apparaissent en fondu d'un
+   côté, dérivent, disparaissent de l'autre, puis reviennent. Délais négatifs
+   pour qu'ils soient déjà en route au chargement. Sans animation (réglage
+   « réduire les animations »), ils restent à leur place d'origine. */
+@media (prefers-reduced-motion: no-preference) {
+  .cloud-1, .cloud-2 { left: 0; right: auto; }
+  .cloud-1 { animation: drift 70s linear infinite; animation-delay: -12s; }
+  .cloud-2 { animation: drift 95s linear infinite; animation-delay: -60s; }
+}
+@keyframes drift {
+  0%   { transform: translateX(-140px); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translateX(calc(100vw + 20px)); opacity: 0; }
+}
+
 /* ---------- Mise en page ---------- */
 
 .page {
