@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VincenTimes — Vince Quêne</title>
-  <meta name="description" content="Vince Quêne, 28 ans, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
+  <meta name="description" content="Vince Quêne, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
   <meta name="author" content="Vincent Quêne">
   <meta name="theme-color" content="#ffbe0b">
   <link rel="canonical" href="https://vincentimes.fr/">
@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://vincentimes.fr/">
   <meta property="og:site_name" content="VincenTimes">
   <meta property="og:title" content="VincenTimes — Vince Quêne">
-  <meta property="og:description" content="Vince Quêne, 28 ans, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
+  <meta property="og:description" content="Vince Quêne, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
   <meta property="og:image" content="https://vincentimes.fr/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
   <meta name="twitter:site" content="@vincentimes">
   <meta name="twitter:creator" content="@vincentimes">
   <meta name="twitter:title" content="VincenTimes — Vince Quêne">
-  <meta name="twitter:description" content="Vince Quêne, 28 ans, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
+  <meta name="twitter:description" content="Vince Quêne, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
   <meta name="twitter:image" content="https://vincentimes.fr/og-image.jpg">
 
   <link rel="icon" type="image/png" sizes="128x128" href="/favicon.png">
@@ -147,23 +147,12 @@
         <div class="separator" aria-hidden="true"></div>
         <p class="name">Vince Quêne</p>
         <p class="tagline">« Rêve en couleurs et en 2D. »</p>
-        <p class="bio">Vidéaste &amp; coordinateur de production.<br>28 ans, en région parisienne.<br>Je fais toonesque.</p>
+        <p class="bio">Vidéaste &amp; coordinateur de production.<br><span data-birth="1998-08-26">28</span> ans, en région parisienne.<br>Je fais toonesque.</p>
       </header>
 
-      <section class="reveal" style="--i:1" aria-label="Contact">
-        <a class="contact sketch" href="mailto:vincent@cabinet26.com">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
-          Écris-moi
-        </a>
-        <span class="contact-mail">vincent@cabinet26.com</span>
-        <a class="cv-link sketch" href="/cv/">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 15.5h5"/></svg>
-          Mon CV
-        </a>
-      </section>
 
-      <footer class="footer reveal" style="--i:2">
-        <span>vincentimes.fr — 2026</span>
+      <footer class="footer reveal" style="--i:1">
+        <span>vincentimes.fr — <span data-year>2026</span></span>
         <span aria-hidden="true">·</span>
         <a href="/mentions-legales.html">Mentions légales</a>
       </footer>
@@ -202,14 +191,27 @@
 
       <section class="reveal" style="--i:3" aria-labelledby="t-pro">
         <h2 class="section-title" id="t-pro">Bosser ensemble</h2>
-        <a class="pro sketch" href="https://cabinet26.com" target="_blank" rel="noopener">
-          <span class="pro-mark" aria-hidden="true"></span>
+        <div class="pro sketch">
+          <span class="pro-mark" role="img" aria-label="Logo cabinet26"></span>
           <span class="pro-text">
             <span class="pro-name">cabinet26</span>
             <span class="pro-desc">Mon activité de vidéaste &amp; coordinateur de production en indépendant.</span>
           </span>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </a>
+        </div>
+        <div class="pro-actions">
+          <a class="contact sketch" href="mailto:vincent@cabinet26.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            Écris-moi
+          </a>
+          <a class="cv-link sketch" href="/cv/">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 15.5h5"/></svg>
+            Mon CV
+          </a>
+        </div>
+        <p class="contact-mail">
+          <button type="button" class="copy-mail" data-copy="vincent@cabinet26.com" title="Copier l'adresse">vincent@cabinet26.com</button>
+          <span class="copy-done" role="status" aria-live="polite"></span>
+        </p>
       </section>
 
       <section class="reveal" style="--i:4" aria-labelledby="t-reseaux">
@@ -274,6 +276,8 @@
     </div>
 
   </main>
+
+<script src="/assets/site.js" defer></script>
 
 
 
