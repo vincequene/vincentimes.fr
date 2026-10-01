@@ -16,14 +16,20 @@ Pas de framework, pas de dépendances — juste du web de base qui charge vite.
 
 ## Stack
 
-- HTML / CSS / JavaScript vanilla
-- Hébergé en statique
+- HTML / CSS vanilla, zéro JavaScript
+- Styles partagés dans `assets/style.css`
+- Polices auto-hébergées dans `assets/fonts/` : Quicksand et Patrick Hand (OFL), Alte Haas Grotesk pour toonesque.
+- DA : fond jaune-orangé tramé, autocollants crème, couleurs franches, contours au crayon (filtres SVG)
+- Icônes SVG inline ([Simple Icons](https://simpleicons.org), CC0)
+- Aucune ressource tierce, aucun cookie, aucun traceur
+- Hébergé sur GitHub Pages
 
 ---
 
 ## Contenu
 
-- Liens vers mes projets (toonesque, Ludokino, cabinet26...)
+- toonesque., mon projet d'essais vidéo, mis en avant
+- cabinet26, mon activité pro
 - Réseaux et contacts
 - Qui je suis en deux lignes
 
