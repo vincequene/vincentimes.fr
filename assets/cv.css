@@ -149,4 +149,7 @@
   .langs li { margin-bottom: 0.4mm; }
   .cv-cols { gap: 6mm; }
   .job, .skills dt, .skills dd { break-inside: avoid; }
+  /* L'anglais est un peu plus long : on resserre d'un cran pour tenir sur une page */
+  html[lang="en"] .cv-block p, html[lang="en"] .cv-block li, html[lang="en"] .cv-block dd { font-size: 8pt; line-height: 1.26; }
+  html[lang="en"] .job + .job { margin-top: 0.9mm; padding-top: 0.9mm; }
 }

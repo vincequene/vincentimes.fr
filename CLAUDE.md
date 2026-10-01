@@ -14,3 +14,8 @@ Site perso statique (HTML/CSS vanilla, GitHub Pages). Styles dans `assets/style.
 - Page `cv/index.html` (styles `assets/cv.css`, avec une feuille d'impression A4).
 - `cv/Vincent-Quene-CV.pdf` est généré depuis cette page (impression Chromium, A4, une page) : le régénérer à chaque modification du CV.
 - Jamais de numéro de téléphone ni de mention RQTH sur la version web.
+
+## Langues
+
+- Version anglaise dans `en/` (`en/index.html`, `en/cv/index.html`), liée par `hreflang` et un lien FR / EN en pied de page.
+- Toute modification de contenu se fait dans les deux langues ; régénérer aussi `en/cv/Vincent-Quene-Resume.pdf`.
