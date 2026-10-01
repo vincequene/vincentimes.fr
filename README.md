@@ -16,7 +16,7 @@ Pas de framework, pas de dépendances — juste du web de base qui charge vite.
 
 ## Stack
 
-- HTML / CSS vanilla, zéro JavaScript
+- HTML / CSS vanilla ; un seul petit script inline (copier l'adresse mail au clic)
 - Styles partagés dans `assets/style.css`
 - Polices auto-hébergées dans `assets/fonts/` : Quicksand et Patrick Hand (OFL), Alte Haas Grotesk pour toonesque.
 - DA : fond jaune-orangé tramé, autocollants crème, couleurs franches, contours au crayon (filtres SVG)

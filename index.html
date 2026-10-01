@@ -208,7 +208,10 @@
             Mon CV
           </a>
         </div>
-        <span class="contact-mail">vincent@cabinet26.com</span>
+        <p class="contact-mail">
+          <button type="button" class="copy-mail" data-copy="vincent@cabinet26.com" title="Copier l'adresse">vincent@cabinet26.com</button>
+          <span class="copy-done" role="status" aria-live="polite"></span>
+        </p>
       </section>
 
       <section class="reveal" style="--i:4" aria-labelledby="t-reseaux">
@@ -273,6 +276,30 @@
     </div>
 
   </main>
+
+  <!-- Copier l'adresse mail au clic (seul script du site) -->
+  <script>
+    document.querySelectorAll('.copy-mail').forEach(function (btn) {
+      var done = btn.parentNode.querySelector('.copy-done');
+      btn.addEventListener('click', function () {
+        var text = btn.dataset.copy;
+        var ok = function () {
+          done.textContent = 'copié !';
+          btn.parentNode.classList.add('is-copied');
+          clearTimeout(btn._t);
+          btn._t = setTimeout(function () { done.textContent = ''; btn.parentNode.classList.remove('is-copied'); }, 1800);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(ok, function () {});
+        } else {
+          var r = document.createRange(); r.selectNodeContents(btn);
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          try { if (document.execCommand('copy')) ok(); } catch (e) {}
+          s.removeAllRanges();
+        }
+      });
+    });
+  </script>
 
 
 
