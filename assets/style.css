@@ -72,6 +72,8 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.6 1.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --hatch: repeating-linear-gradient(-58deg, rgba(255, 255, 255, 0.12) 0 1.5px, transparent 1.5px 5px);
   --grain-fill: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.6 0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Grain atténué pour les grands aplats foncés (carte toonesque.) */
+  --grain-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.6 0.68'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   --pop: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -95,34 +97,18 @@ body {
   overflow-x: hidden;
 }
 
-/* Trame de points en quinconce. Sur mobile : dense en haut de page puis
-   qui s'estompe (elle défile avec la page, le reste du fond est jaune plat) */
+/* Trame de points en quinconce, uniforme et discrète sur toute la hauteur
+   (fixée à l'écran : elle reste présente pendant le défilement) */
 body::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: max(100vh, 760px);
+  position: fixed;
+  inset: 0;
   z-index: -2;
   pointer-events: none;
   background:
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 0 0 / 28px 28px,
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 14px 14px / 28px 28px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 100%);
-          mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 100%);
-  opacity: 0.5;
-}
-/* Sur ordi : trame uniforme sur tout l'écran, plus discrète */
-@media (min-width: 960px) {
-  body::before {
-    position: fixed;
-    inset: 0;
-    height: auto;
-    -webkit-mask-image: none;
-            mask-image: none;
-    opacity: 0.22;
-  }
+  opacity: 0.22;
 }
 /* Grain par-dessus tout le fond */
 body::after {
@@ -394,7 +380,7 @@ a.sketch:active { transform: scale(0.97); }
     radial-gradient(circle, rgba(255, 63, 200, 0.22) 0 2.4px, transparent 3.2px),
     radial-gradient(circle, rgba(62, 224, 240, 0.18) 0 2.4px, transparent 3.2px),
     radial-gradient(circle, rgba(77, 234, 107, 0.16) 0 2.4px, transparent 3.2px),
-    var(--grain-fill),
+    var(--grain-soft),
     linear-gradient(160deg, var(--t-violet-hi), var(--t-violet) 60%);
   background-size: 16px 16px, 16px 16px, 16px 16px, 140px 140px, auto;
   background-position:
