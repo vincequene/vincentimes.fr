@@ -242,6 +242,11 @@ a { color: inherit; }
 .sketch:nth-child(even)::after { border-radius: var(--blob-2); }
 li:nth-child(even) > .sketch::before { inset: 3px 4px -4px -3px; }
 
+/* Petits boutons en ligne : même débord pour tous, sinon l'alternance
+   gauche/droite rend les espacements irréguliers */
+.socials li .sketch::before,
+.support-links li .sketch::before { inset: 2px -2px -2px 2px; }
+
 a.sketch:hover { transform: rotate(-1.4deg) translateY(-3px); }
 li:nth-child(even) > a.sketch:hover { transform: rotate(1.4deg) translateY(-3px); }
 a.sketch:hover::before { --fill: var(--c); }
