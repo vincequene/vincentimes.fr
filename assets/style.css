@@ -97,34 +97,18 @@ body {
   overflow-x: hidden;
 }
 
-/* Trame de points en quinconce. Sur mobile : dense en haut de page puis
-   qui s'estompe (elle défile avec la page, le reste du fond est jaune plat) */
+/* Trame de points en quinconce, uniforme et discrète sur toute la hauteur
+   (fixée à l'écran : elle reste présente pendant le défilement) */
 body::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: max(100vh, 760px);
+  position: fixed;
+  inset: 0;
   z-index: -2;
   pointer-events: none;
   background:
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 0 0 / 28px 28px,
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 14px 14px / 28px 28px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 100%);
-          mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.6) 35%, transparent 100%);
-  opacity: 0.5;
-}
-/* Sur ordi : trame uniforme sur tout l'écran, plus discrète */
-@media (min-width: 960px) {
-  body::before {
-    position: fixed;
-    inset: 0;
-    height: auto;
-    -webkit-mask-image: none;
-            mask-image: none;
-    opacity: 0.22;
-  }
+  opacity: 0.22;
 }
 /* Grain par-dessus tout le fond */
 body::after {
