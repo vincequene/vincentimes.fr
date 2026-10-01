@@ -298,13 +298,13 @@ a.sketch:active { transform: scale(0.97); }
    qui en fait le tour comme une étiquette */
 .avatar {
   position: relative;
-  width: 200px;
-  height: 248px;
+  width: 236px;
+  height: 236px;
   margin: 0 auto 0.4rem;
 }
 .avatar img {
   position: absolute;
-  left: 26px;
+  left: 44px;
   top: 21px;
   width: 148px;
   height: 196px;
