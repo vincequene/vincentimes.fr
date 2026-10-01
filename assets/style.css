@@ -198,6 +198,11 @@ a { color: inherit; }
   .page.home .contact-mail { text-align: left; }
   .page.home .footer { justify-content: flex-start; }
 }
+/* Écran d'ordi peu haut : la colonne de gauche ne tient plus en entier,
+   elle défile normalement au lieu de rester fixe */
+@media (min-width: 960px) and (max-height: 680px) {
+  .page.home .side { position: static; height: auto; padding-top: 5.5rem; justify-content: flex-start; }
+}
 @media (max-width: 959px) {
   .page.home .side { display: contents; }
   .page.home .footer { order: 10; }
@@ -285,6 +290,54 @@ a.sketch:active { transform: scale(0.97); }
   text-decoration: underline wavy;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
+}
+
+/* Avatar (dessin de Popuru) : autocollant rond, bord crème découpé,
+   contour au crayon par-dessus */
+.avatar {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.1rem;
+}
+.avatar-pic {
+  position: relative;
+  display: block;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  transform: rotate(-4deg);
+  box-shadow: 0 0 0 6px var(--cream), 7px 8px 0 5px var(--smudge);
+}
+.avatar-pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatar-pic::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2.4px solid var(--ink);
+  outline: 1.2px solid rgba(43, 23, 18, 0.45);
+  outline-offset: -5px;
+  filter: url(#pencil);
+  pointer-events: none;
+}
+.avatar figcaption {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.avatar figcaption a { color: var(--ink); text-underline-offset: 3px; }
+.avatar figcaption a:hover { color: var(--red); text-decoration: underline wavy; }
+@media (min-width: 960px) {
+  .page.home .avatar { align-items: flex-start; }
+  .page.home .avatar-pic { width: 150px; height: 150px; }
+  .page.home .avatar figcaption { padding-left: 0.4rem; }
 }
 
 /* ---------- Titres de section : étiquettes collées ---------- */
