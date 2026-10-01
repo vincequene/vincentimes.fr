@@ -37,7 +37,6 @@
 
   /* Fond */
   --sun: #ffbe0b;
-  --sun-dk: #ff9a00;
   --dots: #ff6a1a;
 
   /* Autocollants & encre */
@@ -82,7 +81,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  background: linear-gradient(170deg, var(--sun) 0%, #ffb000 55%, var(--sun-dk) 100%) fixed var(--sun);
+  background: var(--sun);
 }
 
 body {
@@ -96,7 +95,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Trame de points qui grossit vers les bords, comme une trame d'impression */
+/* Trame de points régulière, en quinconce */
 body::before {
   content: '';
   position: fixed;
@@ -104,11 +103,9 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(circle, var(--dots) 0 3.5px, transparent 4.5px) 0 0 / 26px 26px,
-    radial-gradient(circle, var(--dots) 0 6px, transparent 7px) 13px 13px / 26px 26px;
-  -webkit-mask-image: radial-gradient(75% 65% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.25) 65%, #000 100%);
-          mask-image: radial-gradient(75% 65% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.25) 65%, #000 100%);
-  opacity: 0.55;
+    radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 0 0 / 28px 28px,
+    radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 14px 14px / 28px 28px;
+  opacity: 0.35;
 }
 /* Grain par-dessus tout le fond */
 body::after {
