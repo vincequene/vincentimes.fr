@@ -27,7 +27,8 @@ Pas de framework, pas de dépendances — juste du web de base qui charge vite.
 
 ## Contenu
 
-- Liens vers mes projets (toonesque, Ludokino, cabinet26...)
+- toonesque., mon projet d'essais vidéo, mis en avant
+- cabinet26, mon activité pro
 - Réseaux et contacts
 - Qui je suis en deux lignes
 
