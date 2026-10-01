@@ -502,19 +502,17 @@ a.sketch:active { transform: scale(0.97); }
 .pro-mark {
   flex-shrink: 0;
   width: 64px; height: 64px;
-  border: 2.2px solid var(--ink);
   border-radius: 14px 18px 13px 17px / 17px 13px 18px 14px;
-  background: var(--ink);
+  background: #0a0a0a;     /* noir de la charte cabinet26, sans grain */
   transform: rotate(-4deg);
-  filter: url(#pencil-text);
   position: relative;
 }
-/* Logo cabinet26 (vectorisé), teinté en crème via un masque */
+/* Logo cabinet26 officiel, blanc sur noir comme la charte, via un masque */
 .pro-mark::after {
   content: '';
   position: absolute;
   inset: 9px 8px 10px 7px;
-  background: var(--cream);
+  background: #fff;
   -webkit-mask: url('img/cabinet26.svg') center / contain no-repeat;
           mask: url('img/cabinet26.svg') center / contain no-repeat;
 }
