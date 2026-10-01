@@ -329,9 +329,9 @@ a.sketch:active { transform: scale(0.97); }
 /* Trame imprimée en trois passes mal repérées : rose, cyan, vert */
 .feature::before {
   background-image:
-    radial-gradient(circle, rgba(255, 63, 200, 0.36) 0 2.4px, transparent 3.2px),
-    radial-gradient(circle, rgba(62, 224, 240, 0.3) 0 2.4px, transparent 3.2px),
-    radial-gradient(circle, rgba(77, 234, 107, 0.26) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(255, 63, 200, 0.22) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(62, 224, 240, 0.18) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(77, 234, 107, 0.16) 0 2.4px, transparent 3.2px),
     var(--grain-fill),
     linear-gradient(160deg, var(--t-violet-hi), var(--t-violet) 60%);
   background-size: 16px 16px, 16px 16px, 16px 16px, 140px 140px, auto;
