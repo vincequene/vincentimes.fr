@@ -401,6 +401,32 @@ a.sketch:active { transform: scale(0.97); }
 .socials svg { width: 18px; height: 18px; fill: currentColor; }
 .feature-handle { font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); }
 
+/* Soutenir toonesque. : Ko-fi et Patreon, sous les réseaux */
+.support {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+  margin-top: -0.4rem;
+  padding-top: 1rem;
+  border-top: 2px dashed rgba(255, 255, 255, 0.35);
+}
+.support-label { font-size: 1.12rem; color: #fff; }
+.support-links { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; }
+.support-links a {
+  --fill: var(--cream);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.85rem;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.support-links svg { width: 17px; height: 17px; fill: currentColor; }
+.kofi    { --c: #72a4f2; }
+.patreon { --c: #ff7a6b; }
+
 /* ---------- cabinet26 ---------- */
 
 .pro {
