@@ -385,7 +385,7 @@ a.sketch:active { transform: scale(0.97); }
 }
 /* Faux fixe du logo VincenTimes */
 @media (prefers-reduced-motion: no-preference) {
-  .hero .logo { animation: boil-logo 0.375s steps(1, end) infinite; }
+  .hero .logo { animation: boil-logo 0.75s steps(1, end) infinite; }  /* ~4 images/s, plus posé que le badge */
 }
 @keyframes boil-logo {
   0%      { filter: url(#boil-logo-1); }
