@@ -308,12 +308,39 @@ a.sketch:active { transform: scale(0.97); }
   padding: clamp(1.6rem, 5vw, 2.3rem);
   color: #fff;
 }
+/* Écart de l'aberration chromatique (trame + titre). Déclaré pour pouvoir
+   l'animer : au survol, la trame et le logo se décalent ensemble. */
+@property --ab {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+.feature { --ab: 1; transition: transform 0.35s var(--pop), --ab 0.3s var(--ease); }
+.feature:hover { --ab: 1.8; animation: aberrate 0.6s steps(1) 1; }
+@keyframes aberrate {
+  0%   { --ab: 1; }
+  15%  { --ab: 3; }
+  30%  { --ab: 0.3; }
+  45%  { --ab: 2.8; }
+  60%  { --ab: 1.2; }
+  75%  { --ab: 2.4; }
+  100% { --ab: 1.8; }
+}
+
+/* Trame imprimée en trois passes mal repérées : rose, cyan, vert */
 .feature::before {
-  background:
-    radial-gradient(circle, rgba(255, 63, 200, 0.6) 0 2.5px, transparent 3.5px) 0 0 / 16px 16px,
+  background-image:
+    radial-gradient(circle, rgba(255, 63, 200, 0.55) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(62, 224, 240, 0.45) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(77, 234, 107, 0.4) 0 2.4px, transparent 3.2px),
     var(--grain-fill),
     linear-gradient(160deg, var(--t-violet-hi), var(--t-violet) 60%);
-  background-size: 16px 16px, 140px 140px, auto;
+  background-size: 16px 16px, 16px 16px, 16px 16px, 140px 140px, auto;
+  background-position:
+    calc(var(--ab) * -1.5px) calc(var(--ab) * -1px),
+    calc(var(--ab) * 1.5px) calc(var(--ab) * 0.5px),
+    calc(var(--ab) * 0.5px) calc(var(--ab) * 1.6px),
+    0 0, 0 0;
   box-shadow: 8px 9px 0 -1px var(--smudge);
 }
 
@@ -327,9 +354,9 @@ a.sketch:active { transform: scale(0.97); }
   -webkit-text-stroke: 2px #1c0b48;
   paint-order: stroke fill;
   text-shadow:
-    -5px -3px 0 var(--t-pink),
-     5px  4px 0 var(--t-green),
-     1px  8px 0 var(--t-cyan);
+    calc(var(--ab) * -5px) calc(var(--ab) * -3px) 0 var(--t-pink),
+    calc(var(--ab) * 5px)  calc(var(--ab) * 4px)  0 var(--t-green),
+    calc(var(--ab) * 1px)  calc(var(--ab) * 8px)  0 var(--t-cyan);
   filter: url(#pencil-text);
 }
 .feature:hover .feature-title { animation: jitter 0.45s steps(2) 1; }
