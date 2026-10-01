@@ -383,6 +383,15 @@ a.sketch:active { transform: scale(0.97); }
   33.33%  { filter: url(#boil-2); }
   66.66%  { filter: url(#boil-3); }
 }
+/* Faux fixe du logo VincenTimes */
+@media (prefers-reduced-motion: no-preference) {
+  .hero .logo { animation: boil-logo 0.375s steps(1, end) infinite; }
+}
+@keyframes boil-logo {
+  0%      { filter: url(#boil-logo-1); }
+  33.33%  { filter: url(#boil-logo-2); }
+  66.66%  { filter: url(#boil-logo-3); }
+}
 .avatar-ring a:hover text { fill: var(--red); }
 .avatar-ring a text { text-decoration: none; }
 .avatar-ring a:focus-visible { outline: none; }
