@@ -315,24 +315,23 @@ a.sketch:active { transform: scale(0.97); }
   inherits: true;
   initial-value: 1;
 }
-.feature { --ab: 1; transition: transform 0.35s var(--pop), --ab 0.3s var(--ease); }
-.feature:hover { --ab: 1.8; animation: aberrate 0.6s steps(1) 1; }
+.feature { --ab: 1; }
+/* Au survol : le décalage « bouillonne » image par image (sur les deux,
+   ~8 images/s), comme une anim tradi ; retour sec quand on sort. */
+.feature:hover { --ab: 1.8; animation: aberrate 0.5s steps(1, end) infinite; }
 @keyframes aberrate {
-  0%   { --ab: 1; }
-  15%  { --ab: 3; }
-  30%  { --ab: 0.3; }
-  45%  { --ab: 2.8; }
-  60%  { --ab: 1.2; }
-  75%  { --ab: 2.4; }
-  100% { --ab: 1.8; }
+  0%   { --ab: 1.8; }
+  25%  { --ab: 2.6; }
+  50%  { --ab: 1.3; }
+  75%  { --ab: 2.2; }
 }
 
 /* Trame imprimée en trois passes mal repérées : rose, cyan, vert */
 .feature::before {
   background-image:
-    radial-gradient(circle, rgba(255, 63, 200, 0.55) 0 2.4px, transparent 3.2px),
-    radial-gradient(circle, rgba(62, 224, 240, 0.45) 0 2.4px, transparent 3.2px),
-    radial-gradient(circle, rgba(77, 234, 107, 0.4) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(255, 63, 200, 0.36) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(62, 224, 240, 0.3) 0 2.4px, transparent 3.2px),
+    radial-gradient(circle, rgba(77, 234, 107, 0.26) 0 2.4px, transparent 3.2px),
     var(--grain-fill),
     linear-gradient(160deg, var(--t-violet-hi), var(--t-violet) 60%);
   background-size: 16px 16px, 16px 16px, 16px 16px, 140px 140px, auto;
@@ -354,15 +353,16 @@ a.sketch:active { transform: scale(0.97); }
   -webkit-text-stroke: 2px #1c0b48;
   paint-order: stroke fill;
   text-shadow:
-    calc(var(--ab) * -5px) calc(var(--ab) * -3px) 0 var(--t-pink),
-    calc(var(--ab) * 5px)  calc(var(--ab) * 4px)  0 var(--t-green),
-    calc(var(--ab) * 1px)  calc(var(--ab) * 8px)  0 var(--t-cyan);
+    calc(var(--ab) * -5px) calc(var(--ab) * -3px) 0 rgb(255 63 200 / 0.7),
+    calc(var(--ab) * 5px)  calc(var(--ab) * 4px)  0 rgb(77 234 107 / 0.65),
+    calc(var(--ab) * 1px)  calc(var(--ab) * 8px)  0 rgb(62 224 240 / 0.65);
   filter: url(#pencil-text);
 }
-.feature:hover .feature-title { animation: jitter 0.45s steps(2) 1; }
+.feature:hover .feature-title { animation: jitter 0.5s steps(1, end) infinite; }
 @keyframes jitter {
+  0%  { transform: translate(0, 0); }
   25% { transform: translate(-2px, 1px); }
-  50% { transform: translate(2px, -1px); }
+  50% { transform: translate(1px, -1px); }
   75% { transform: translate(-1px, 0); }
 }
 .feature-pitch { margin-top: 1.1rem; max-width: 34ch; font-size: 1.28rem; line-height: 1.3; }
