@@ -21,7 +21,7 @@
     var done = btn.parentNode.querySelector('.copy-done');
     btn.addEventListener('click', function () {
       var ok = function () {
-        done.textContent = 'copié !';
+        done.textContent = document.documentElement.lang === 'en' ? 'copied!' : 'copié !';
         btn.parentNode.classList.add('is-copied');
         clearTimeout(btn._t);
         btn._t = setTimeout(function () {
