@@ -18,7 +18,8 @@ Pas de framework, pas de dépendances — juste du web de base qui charge vite.
 
 - HTML / CSS vanilla, zéro JavaScript
 - Styles partagés dans `assets/style.css`
-- Polices auto-hébergées dans `assets/fonts/` (Quicksand, Plus Jakarta Sans, JetBrains Mono — OFL ; Alte Haas Grotesk pour toonesque. : déposer `AlteHaasGroteskBold.woff2` ou `.ttf`)
+- Polices auto-hébergées dans `assets/fonts/` : Quicksand et Patrick Hand (OFL), Alte Haas Grotesk pour toonesque.
+- DA « crayon » : papier, coloriage aux crayons de couleur, contours au crayon à papier (filtres SVG)
 - Icônes SVG inline ([Simple Icons](https://simpleicons.org), CC0)
 - Aucune ressource tierce, aucun cookie, aucun traceur
 - Hébergé sur GitHub Pages
