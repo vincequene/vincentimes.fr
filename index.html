@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VincenTimes — Vince Quêne</title>
-  <meta name="description" content="Vince Quêne, 28 ans, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
+  <meta name="description" content="Vince Quêne, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
   <meta name="author" content="Vincent Quêne">
   <meta name="theme-color" content="#ffbe0b">
   <link rel="canonical" href="https://vincentimes.fr/">
@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://vincentimes.fr/">
   <meta property="og:site_name" content="VincenTimes">
   <meta property="og:title" content="VincenTimes — Vince Quêne">
-  <meta property="og:description" content="Vince Quêne, 28 ans, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
+  <meta property="og:description" content="Vince Quêne, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
   <meta property="og:image" content="https://vincentimes.fr/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
   <meta name="twitter:site" content="@vincentimes">
   <meta name="twitter:creator" content="@vincentimes">
   <meta name="twitter:title" content="VincenTimes — Vince Quêne">
-  <meta name="twitter:description" content="Vince Quêne, 28 ans, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
+  <meta name="twitter:description" content="Vince Quêne, vidéaste & coordinateur de production en région parisienne. Créateur de toonesque. : du cartoonesque sous toutes ses formes.">
   <meta name="twitter:image" content="https://vincentimes.fr/og-image.jpg">
 
   <link rel="icon" type="image/png" sizes="128x128" href="/favicon.png">
@@ -147,12 +147,12 @@
         <div class="separator" aria-hidden="true"></div>
         <p class="name">Vince Quêne</p>
         <p class="tagline">« Rêve en couleurs et en 2D. »</p>
-        <p class="bio">Vidéaste &amp; coordinateur de production.<br>28 ans, en région parisienne.<br>Je fais toonesque.</p>
+        <p class="bio">Vidéaste &amp; coordinateur de production.<br><span data-birth="1998-08-26">28</span> ans, en région parisienne.<br>Je fais toonesque.</p>
       </header>
 
 
       <footer class="footer reveal" style="--i:1">
-        <span>vincentimes.fr — 2026</span>
+        <span>vincentimes.fr — <span data-year>2026</span></span>
         <span aria-hidden="true">·</span>
         <a href="/mentions-legales.html">Mentions légales</a>
       </footer>
@@ -277,29 +277,7 @@
 
   </main>
 
-  <!-- Copier l'adresse mail au clic (seul script du site) -->
-  <script>
-    document.querySelectorAll('.copy-mail').forEach(function (btn) {
-      var done = btn.parentNode.querySelector('.copy-done');
-      btn.addEventListener('click', function () {
-        var text = btn.dataset.copy;
-        var ok = function () {
-          done.textContent = 'copié !';
-          btn.parentNode.classList.add('is-copied');
-          clearTimeout(btn._t);
-          btn._t = setTimeout(function () { done.textContent = ''; btn.parentNode.classList.remove('is-copied'); }, 1800);
-        };
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(text).then(ok, function () {});
-        } else {
-          var r = document.createRange(); r.selectNodeContents(btn);
-          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-          try { if (document.execCommand('copy')) ok(); } catch (e) {}
-          s.removeAllRanges();
-        }
-      });
-    });
-  </script>
+<script src="/assets/site.js" defer></script>
 
 
 

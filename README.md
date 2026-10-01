@@ -16,7 +16,7 @@ Pas de framework, pas de dépendances — juste du web de base qui charge vite.
 
 ## Stack
 
-- HTML / CSS vanilla ; un seul petit script inline (copier l'adresse mail au clic)
+- HTML / CSS vanilla ; un seul petit script, `assets/site.js` (âge et année calculés, copie de l'adresse mail au clic)
 - Styles partagés dans `assets/style.css`
 - Polices auto-hébergées dans `assets/fonts/` : Quicksand et Patrick Hand (OFL), Alte Haas Grotesk pour toonesque.
 - DA : fond jaune-orangé tramé, autocollants crème, couleurs franches, contours au crayon (filtres SVG)
