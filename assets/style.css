@@ -242,6 +242,11 @@ a { color: inherit; }
 .sketch:nth-child(even)::after { border-radius: var(--blob-2); }
 li:nth-child(even) > .sketch::before { inset: 3px 4px -4px -3px; }
 
+/* Petits boutons en ligne : même débord pour tous, sinon l'alternance
+   gauche/droite rend les espacements irréguliers */
+.socials li .sketch::before,
+.support-links li .sketch::before { inset: 2px -2px -2px 2px; }
+
 a.sketch:hover { transform: rotate(-1.4deg) translateY(-3px); }
 li:nth-child(even) > a.sketch:hover { transform: rotate(1.4deg) translateY(-3px); }
 a.sketch:hover::before { --fill: var(--c); }
@@ -366,7 +371,7 @@ a.sketch:active { transform: scale(0.97); }
   75% { transform: translate(-1px, 0); }
 }
 .feature-pitch { margin-top: 1.1rem; max-width: 34ch; font-size: 1.28rem; line-height: 1.3; }
-.feature-quote { margin-top: 0.4rem; font-size: 1.12rem; color: rgba(255, 255, 255, 0.85); }
+.feature-quote { margin-top: 0.15rem; font-size: 1rem; color: rgba(255, 255, 255, 0.7); }
 
 .feature-actions {
   display: flex;
@@ -401,6 +406,32 @@ a.sketch:active { transform: scale(0.97); }
 .socials svg { width: 18px; height: 18px; fill: currentColor; }
 .feature-handle { font-size: 1.05rem; color: rgba(255, 255, 255, 0.85); }
 
+/* Soutenir toonesque. : Ko-fi et Patreon, sous les réseaux */
+.support {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+  margin-top: -0.4rem;
+  padding-top: 1rem;
+  border-top: 2px dashed rgba(255, 255, 255, 0.35);
+}
+.support-label { font-size: 1.12rem; color: #fff; }
+.support-links { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; }
+.support-links a {
+  --fill: var(--cream);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.85rem;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.support-links svg { width: 17px; height: 17px; fill: currentColor; }
+.kofi    { --c: #72a4f2; }
+.patreon { --c: #ff7a6b; }
+
 /* ---------- cabinet26 ---------- */
 
 .pro {
@@ -412,17 +443,23 @@ a.sketch:active { transform: scale(0.97); }
   text-decoration: none;
 }
 .pro-mark {
-  display: grid;
-  place-items: center;
-  width: 48px; height: 48px;
   flex-shrink: 0;
+  width: 64px; height: 64px;
   border: 2.2px solid var(--ink);
-  border-radius: 50% 45% 52% 48% / 48% 52% 45% 50%;
+  border-radius: 14px 18px 13px 17px / 17px 13px 18px 14px;
   background: var(--ink);
-  font-size: 1.15rem;
-  color: var(--cream);
   transform: rotate(-4deg);
   filter: url(#pencil-text);
+  position: relative;
+}
+/* Logo cabinet26 (vectorisé), teinté en crème via un masque */
+.pro-mark::after {
+  content: '';
+  position: absolute;
+  inset: 9px 8px 10px 7px;
+  background: var(--cream);
+  -webkit-mask: url('img/cabinet26.svg') center / contain no-repeat;
+          mask: url('img/cabinet26.svg') center / contain no-repeat;
 }
 .pro-text { display: flex; flex-direction: column; min-width: 0; }
 .pro-name { font-size: 1.4rem; line-height: 1.15; }
