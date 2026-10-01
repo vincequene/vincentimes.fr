@@ -98,17 +98,26 @@ body {
 }
 
 /* Trame de points en quinconce, uniforme et discrète sur toute la hauteur
-   (fixée à l'écran : elle reste présente pendant le défilement) */
+   (fixée à l'écran : elle reste présente pendant le défilement).
+   Elle défile lentement en diagonale, en boucle, comme un fond de cartoon :
+   le calque déborde d'une case (28 px) et glisse d'exactement une case,
+   la boucle est donc invisible. Animée en transform (GPU, pas de repaint). */
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
+  inset: -28px;
   z-index: -2;
   pointer-events: none;
   background:
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 0 0 / 28px 28px,
     radial-gradient(circle, var(--dots) 0 4px, transparent 5px) 14px 14px / 28px 28px;
   opacity: 0.22;
+  will-change: transform;
+  animation: trame-scroll 4s linear infinite;
+}
+@keyframes trame-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(28px, 28px, 0); }
 }
 /* Grain par-dessus tout le fond */
 body::after {
