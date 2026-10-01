@@ -148,21 +148,6 @@ a { color: inherit; }
 .cloud-2 .float { animation-duration: 9s; animation-delay: -3s; }
 @keyframes float { 50% { transform: translate(8px, -5px); } }
 
-/* Étiquette « fin. » en bas de page (répond aux nuages du haut) */
-.the-end {
-  display: flex;
-  justify-content: center;
-  padding: 0.5rem 0 1rem;
-}
-.the-end span {
-  padding: 0.1rem 1.1rem 0.25rem;
-  font-size: 1.7rem;
-  background: var(--cream);
-  border-radius: 5px 11px 6px 10px;
-  box-shadow: 4px 4px 0 var(--red);
-  transform: rotate(-3deg);
-}
-
 /* ---------- Mise en page ---------- */
 
 .page {
