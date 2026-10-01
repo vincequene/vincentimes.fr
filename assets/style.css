@@ -161,11 +161,11 @@ a { color: inherit; }
   z-index: -1;
 }
 .cloud-1 { top: 2.5rem; left: max(1rem, calc(50% - 560px)); width: 130px; }
-.cloud-2 { top: 1.5rem; right: max(0.5rem, calc(50% - 600px)); width: 100px; }
+.cloud-2 { top: 4.5rem; right: max(0.5rem, calc(50% - 600px)); width: 100px; }
 .cloud-3, .cloud-4, .cloud-5 { display: none; }
 @media (max-width: 959px) {
   .cloud-1 { top: 0.6rem; left: 0.6rem; width: 66px; }
-  .cloud-2 { top: 1.4rem; right: 0.8rem; width: 54px; }
+  .cloud-2 { top: 4.2rem; right: 0.8rem; width: 54px; }
 }
 .doodle .float { animation: float 7s ease-in-out infinite; transform-origin: center; }
 .cloud-2 .float { animation-duration: 9s; animation-delay: -3s; }
@@ -789,3 +789,42 @@ a.sketch:active { transform: scale(0.97); }
 @media (max-width: 340px) {
   .links { grid-template-columns: 1fr; }
 }
+
+/* ---------- Choix de la langue ----------
+   Petit interrupteur FR / EN en haut à droite, en autocollant. Les drapeaux
+   sont en SVG : les émojis drapeaux ne s'affichent pas sous Windows. */
+
+.lang {
+  position: absolute;
+  top: 0.9rem;
+  right: max(1rem, calc(50% - 600px));
+  z-index: 5;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.lang > * {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem 0.4rem;
+  border-radius: 7px 10px 8px 11px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.lang svg {
+  width: 1.2em;
+  height: 0.8em;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1.2px var(--ink);
+}
+.lang [aria-current] { background: var(--ink); color: var(--cream); }
+.lang a { transition: background-color 0.2s var(--ease), transform 0.3s var(--pop); }
+.lang a:hover { background: var(--cyan); transform: rotate(-3deg); }
+.lang a:active { transform: scale(0.95); }
+@media (max-width: 959px) {
+  .lang { top: 0.6rem; right: 0.6rem; font-size: 0.98rem; }
+}
+@media print { .lang { display: none; } }
