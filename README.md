@@ -1,48 +1,101 @@
 # vincentimes.fr
 
-Site personnel de Vincent Quêne — alias **vincentimes** / **toonesque**.  
-Une page statique qui centralise mes liens, projets et présence en ligne.
+Site personnel de Vincent Quêne — alias **VincenTimes** / **toonesque.**
+Une carte de visite en ligne qui centralise mes projets, mon activité pro, mon CV et mes réseaux.
 
-🔗 [vincentimes.fr](https://vincentimes.fr)
+🔗 [vincentimes.fr](https://vincentimes.fr) · 🇬🇧 [vincentimes.fr/en](https://vincentimes.fr/en/)
 
 ---
 
 ## C'est quoi ?
 
-Une carte de visite digitale en HTML/CSS/JS pur.  
-Pas de framework, pas de dépendances — juste du web de base qui charge vite.
+Un site statique en HTML/CSS, avec un tout petit peu de JavaScript.
+Pas de framework, pas de dépendances, aucune ressource tierce : juste du web de base qui charge vite.
+
+---
+
+## Pages
+
+| Page | Français | English |
+|---|---|---|
+| Accueil | `/` | `/en/` |
+| CV | `/cv/` (+ `Vincent-Quene-CV.pdf`) | `/en/cv/` (+ `Vincent-Quene-Resume.pdf`) |
+| Mentions légales | `/mentions-legales.html` | — |
+| Page introuvable | `/404.html` | — |
+
+Sur l'accueil :
+
+- **toonesque.** mis en avant (« À l'antenne ») : chaîne YouTube, réseaux, soutien Ko-fi / Patreon
+- **Bosser ensemble** : cabinet26 (mon activité d'auto-entrepreneur), boutons mail et CV
+- Réseaux, et ce que je regarde, joue & écoute (Letterboxd, Backloggd, AniList, Apple Music, Last.fm)
+- Avatar dessiné par [Popuru](https://popuru.carrd.co/)
+
+---
+
+## Direction artistique
+
+- Fond jaune tramé qui défile, nuages qui traversent l'écran
+- Cartes en autocollants crème, contours crayonnés (filtres SVG), couleurs franches au survol
+- Faux fixe (*line boil*) sur le logo et le badge de l'avatar
+- Carte toonesque. en violet électrique, trame en aberration chromatique
+- Toutes les animations sont coupées si « réduire les animations » est activé sur l'appareil
 
 ---
 
 ## Stack
 
-- HTML / CSS vanilla ; un seul petit script, `assets/site.js` (âge et année calculés, copie de l'adresse mail au clic)
-- Styles partagés dans `assets/style.css`
+- HTML / CSS vanilla
+- `assets/style.css` : styles du site · `assets/cv.css` : page CV et version imprimable A4
+- `assets/site.js` : seul script du site (âge et année calculés, copie de l'adresse mail au clic). Sans JavaScript, tout reste lisible et utilisable
 - Polices auto-hébergées dans `assets/fonts/` : Quicksand et Patrick Hand (OFL), Alte Haas Grotesk pour toonesque.
-- DA : fond jaune-orangé tramé, autocollants crème, couleurs franches, contours au crayon (filtres SVG)
-- Icônes SVG inline ([Simple Icons](https://simpleicons.org), CC0)
+- Images dans `assets/img/` (avatar, logo cabinet26) ; icônes SVG inline ([Simple Icons](https://simpleicons.org), CC0)
 - Aucune ressource tierce, aucun cookie, aucun traceur
-- Hébergé sur GitHub Pages
+- `sitemap.xml`, `robots.txt`, balises Open Graph / X et `hreflang` FR ↔ EN
+- Hébergé sur GitHub Pages (domaine via `CNAME`)
 
----
-
-## Contenu
-
-- toonesque., mon projet d'essais vidéo, mis en avant
-- cabinet26, mon activité pro
-- Réseaux et contacts
-- Qui je suis en deux lignes
+```
+.
+├── index.html            accueil FR
+├── en/                   version anglaise (accueil + cv/)
+├── cv/                   CV FR (page + PDF + image de partage)
+├── mentions-legales.html
+├── 404.html
+├── assets/               style.css, cv.css, site.js, fonts/, img/
+├── favicon.png, apple-touch-icon.png, og-image.jpg
+├── sitemap.xml, robots.txt, CNAME
+└── CLAUDE.md             conventions de travail sur le dépôt
+```
 
 ---
 
 ## Lancer en local
 
+Les chemins sont absolus (`/assets/…`) : il faut un petit serveur, ouvrir `index.html` en double-cliquant ne suffit pas.
+
 ```bash
 git clone https://github.com/vincequene/vincentimes.fr.git
 cd vincentimes.fr
-# Ouvrir index.html dans un navigateur, ou lancer un serveur local :
-npx serve .
+python3 -m http.server 8000   # ou : npx serve .
 ```
+
+Puis ouvrir [http://localhost:8000](http://localhost:8000).
+
+---
+
+## Mettre à jour
+
+- **Contenu** : modifier la page française **et** la page anglaise (`en/`).
+- **CV** : après toute modification, régénérer le PDF de la langue concernée. Ouvrir `/cv/` (ou `/en/cv/`) dans Chrome → Imprimer → Enregistrer au format PDF, format A4, marges par défaut. La feuille d'impression met le CV en page sur une seule page, sans fond ni effets.
+- **Âge et année** : calculés automatiquement, rien à faire.
+- Jamais de numéro de téléphone ni de mention RQTH sur la version web du CV.
+
+---
+
+## Crédits
+
+- Avatar : [Popuru](https://popuru.carrd.co/)
+- Polices : Quicksand, Patrick Hand (SIL Open Font License 1.1) ; Alte Haas Grotesk © Yann Le Coroller
+- Icônes de marques : [Simple Icons](https://simpleicons.org) (CC0) — les marques citées appartiennent à leurs propriétaires respectifs
 
 ---
 
@@ -54,4 +107,4 @@ C'est mon site perso, donc les PR externes ont peu de chances de passer — mais
 
 ## Licence
 
-Code source disponible publiquement. Contenu et identité visuelle © Vincent Quêne.
+Code source disponible publiquement. Contenu, avatar et identité visuelle © Vincent Quêne (avatar dessiné par Popuru).
