@@ -124,19 +124,19 @@
 }
 
 /* ---------- Impression / PDF : A4 sobre ---------- */
-@page { size: A4; margin: 8mm 12mm; }
+@page { size: A4; margin: 7mm 12mm; }
 @media print {
   html, body { background: #fff !important; }
   body::before, body::after, .back, .cv-pdf, .cv .footer { display: none !important; }
   .reveal { animation: none !important; }
-  .cv { max-width: none; padding: 0; gap: 2.2mm; }
+  .cv { max-width: none; padding: 0; gap: 1.8mm; }
   .cv .sheet { padding: 0; }
   .sketch::before, .sketch::after { display: none !important; }
   .cv-head { border-bottom: 1.5pt solid #2b1712; padding-bottom: 2mm; }
   .cv-head h1 { font-size: 20pt; -webkit-text-stroke: 0; color: #2b1712; text-shadow: none; filter: none; }
   .cv-role { font-size: 11.5pt; margin-top: 0.5mm; }
   .cv-contact { margin-top: 1mm; }
-  .cv-contact, .cv-block p, .cv-block li, .cv-block dd { font-size: 8.2pt; line-height: 1.28; }
+  .cv-contact, .cv-block p, .cv-block li, .cv-block dd { font-size: 8.2pt; line-height: 1.25; }
   .when { font-size: 7.8pt !important; line-height: 1.2; margin-top: 0; }
   .cv-contact a, .cv-block a { color: #2b1712; text-decoration: underline dotted 0.6pt; text-underline-offset: 1.5pt; }
   .cv-block h2 { background: none; box-shadow: none; transform: none; padding: 0; margin-bottom: 1mm; font-size: 11.5pt; color: #e8281e; }
@@ -150,6 +150,6 @@
   .cv-cols { gap: 6mm; }
   .job, .skills dt, .skills dd { break-inside: avoid; }
   /* L'anglais est un peu plus long : on resserre d'un cran pour tenir sur une page */
-  html[lang="en"] .cv-block p, html[lang="en"] .cv-block li, html[lang="en"] .cv-block dd { font-size: 8pt; line-height: 1.26; }
+  html[lang="en"] .cv-block p, html[lang="en"] .cv-block li, html[lang="en"] .cv-block dd { font-size: 8pt; line-height: 1.23; }
   html[lang="en"] .job + .job { margin-top: 0.9mm; padding-top: 0.9mm; }
 }

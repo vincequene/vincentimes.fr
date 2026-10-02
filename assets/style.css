@@ -545,6 +545,34 @@ a.sketch:active { transform: scale(0.97); }
 .kofi    { --c: #72a4f2; }
 .patreon { --c: #ff7a6b; }
 
+/* ---------- Côté musique : carte discrète sous toonesque. ---------- */
+
+.music {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem 1.1rem;
+}
+.music-desc { font-size: 1.05rem; color: var(--ink-soft); }
+.music-links { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+.music-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.music-links li .sketch::before { inset: 2px -2px -2px 2px; }
+.music-links svg { width: 15px; height: 15px; fill: currentColor; }
+.m-spotify    { --c: #4fe08a; }
+.m-applemusic { --c: #ff6070; }
+.m-youtube    { --c: #ff5a4f; }
+.m-deezer     { --c: #c47dff; }
+.m-bandcamp   { --c: #5cc8e6; }
+.m-soundcloud { --c: #ff8a3d; }
+
 /* ---------- cabinet26 ---------- */
 
 .pro {

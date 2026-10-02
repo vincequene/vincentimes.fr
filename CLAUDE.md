@@ -13,7 +13,7 @@ Site perso statique (HTML/CSS vanilla, GitHub Pages). Styles dans `assets/style.
 
 - Page `cv/index.html` (styles `assets/cv.css`, avec une feuille d'impression A4).
 - `cv/Vincent-Quene-CV.pdf` est généré depuis cette page (impression Chromium, A4, une page) : le régénérer à chaque modification du CV.
-- Jamais de numéro de téléphone ni de mention RQTH sur la version web.
+- Jamais de numéro de téléphone ni d'information médicale ou administrative personnelle sur la version web.
 
 ## Langues
 
