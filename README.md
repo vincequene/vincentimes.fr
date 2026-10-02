@@ -88,7 +88,7 @@ Puis ouvrir [http://localhost:8000](http://localhost:8000).
 - **Contenu** : modifier la page française **et** la page anglaise (`en/`).
 - **CV** : après toute modification, régénérer le PDF de la langue concernée. Ouvrir `/cv/` (ou `/en/cv/`) dans Chrome → Imprimer → Enregistrer au format PDF, format A4, marges par défaut. La feuille d'impression met le CV en page sur une seule page, sans fond ni effets.
 - **Âge et année** : calculés automatiquement, rien à faire.
-- Jamais de numéro de téléphone ni de mention RQTH sur la version web du CV.
+- Jamais de numéro de téléphone ni d'informations personnelles sensibles sur la version web du CV.
 
 ---
 
