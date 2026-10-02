@@ -26,6 +26,7 @@ Pas de framework, pas de dépendances, aucune ressource tierce : juste du web de
 Sur l'accueil :
 
 - **toonesque.** mis en avant (« À l'antenne ») : chaîne YouTube, réseaux, soutien Ko-fi / Patreon
+- **Côté musique** : carte discrète vers mes morceaux (Spotify, Apple Music, Deezer, Bandcamp, SoundCloud)
 - **Bosser ensemble** : cabinet26 (mon activité d'auto-entrepreneur), boutons mail et CV
 - Réseaux, et ce que je regarde, joue & écoute (Letterboxd, Backloggd, AniList, Apple Music, Last.fm)
 - Avatar dessiné par [Popuru](https://popuru.carrd.co/)
