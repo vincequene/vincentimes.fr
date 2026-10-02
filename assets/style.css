@@ -568,6 +568,7 @@ a.sketch:active { transform: scale(0.97); }
 .music-links svg { width: 15px; height: 15px; fill: currentColor; }
 .m-spotify    { --c: #4fe08a; }
 .m-applemusic { --c: #ff6070; }
+.m-youtube    { --c: #ff5a4f; }
 .m-deezer     { --c: #c47dff; }
 .m-bandcamp   { --c: #5cc8e6; }
 .m-soundcloud { --c: #ff8a3d; }

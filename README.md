@@ -27,7 +27,7 @@ Sur l'accueil :
 
 - **toonesque.** mis en avant (« À l'antenne ») : chaîne YouTube, réseaux, soutien Ko-fi / Patreon
 - **Bosser ensemble** : cabinet26 (mon activité d'auto-entrepreneur), boutons mail et CV
-- **Côté musique** : carte discrète vers mes morceaux et productions (Spotify, Apple Music, Deezer, Bandcamp, SoundCloud)
+- **Côté musique** : carte discrète vers mes morceaux et productions (Spotify, Apple Music, YouTube, Deezer, Bandcamp, SoundCloud)
 - Réseaux, et ce que je regarde, joue & écoute (Letterboxd, Backloggd, AniList, Apple Music, Last.fm)
 - Avatar dessiné par [Popuru](https://popuru.carrd.co/)
 
