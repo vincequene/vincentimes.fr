@@ -52,7 +52,8 @@ Sur l'accueil :
 - Images dans `assets/img/` (avatar, logo cabinet26) ; icônes SVG inline ([Simple Icons](https://simpleicons.org), CC0)
 - Aucune ressource tierce, aucun cookie, aucun traceur
 - `sitemap.xml`, `robots.txt`, balises Open Graph / X et `hreflang` FR ↔ EN
-- Hébergé sur GitHub Pages (domaine via `CNAME`)
+- Hébergé sur Cloudflare (Workers avec assets, sans build) ; domaine chez OVHcloud, DNS sur Cloudflare
+- Configuration : `wrangler.jsonc` (assets = racine, `404.html` en page 404) et `.assetsignore` (fichiers non déployés : docs, `.github`, `.claude`…). Aperçus par branche via `wrangler preview`
 
 ```
 .
@@ -63,7 +64,8 @@ Sur l'accueil :
 ├── 404.html
 ├── assets/               style.css, cv.css, site.js, fonts/, img/
 ├── favicon.png, apple-touch-icon.png, og-image.jpg
-├── sitemap.xml, robots.txt, CNAME
+├── sitemap.xml, robots.txt
+├── wrangler.jsonc, .assetsignore   config Cloudflare
 └── CLAUDE.md             conventions de travail sur le dépôt
 ```
 

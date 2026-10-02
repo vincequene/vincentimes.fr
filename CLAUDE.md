@@ -1,6 +1,12 @@
 # vincentimes.fr
 
-Site perso statique (HTML/CSS vanilla, GitHub Pages). Styles dans `assets/style.css`, polices auto-hébergées dans `assets/fonts/`, aucune ressource tierce.
+Site perso statique (HTML/CSS vanilla, hébergé sur Cloudflare Workers avec assets, sans build). Styles dans `assets/style.css`, polices auto-hébergées dans `assets/fonts/`, aucune ressource tierce.
+
+## Hébergement
+
+- Cloudflare Workers (assets statiques) : config dans `wrangler.jsonc`, fichiers exclus du déploiement dans `.assetsignore` (y ajouter tout nouveau fichier non public).
+- Déploiement de `main` par `npx wrangler deploy` ; aperçus par branche via `npx wrangler preview` (d'où le bloc `previews`). Ne jamais commiter `.wrangler/`.
+- Domaine chez OVHcloud, DNS sur Cloudflare.
 
 ## Pull requests
 
