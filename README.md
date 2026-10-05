@@ -10,7 +10,7 @@ Une carte de visite en ligne qui centralise mes projets, mon activité pro, mon 
 ## C'est quoi ?
 
 Un site statique en HTML/CSS, avec un tout petit peu de JavaScript.
-Pas de framework, pas de dépendances, aucune ressource tierce : juste du web de base qui charge vite.
+Pas de framework, pas de dépendances, aucune ressource tierce hormis la mesure d'audience Cloudflare : juste du web de base qui charge vite.
 
 ---
 
@@ -50,7 +50,7 @@ Sur l'accueil :
 - `assets/site.js` : seul script du site (âge et année calculés, copie de l'adresse mail au clic). Sans JavaScript, tout reste lisible et utilisable
 - Polices auto-hébergées dans `assets/fonts/` : Quicksand et Patrick Hand (OFL), Alte Haas Grotesk pour toonesque.
 - Images dans `assets/img/` (avatar, logo cabinet26) ; icônes SVG inline ([Simple Icons](https://simpleicons.org), CC0)
-- Aucune ressource tierce, aucun cookie, aucun traceur
+- Aucun cookie, aucun stockage dans le navigateur ; seule ressource tierce prévue : Cloudflare Web Analytics (anonyme, agrégé), détaillé dans `mentions-legales.html`
 - `sitemap.xml`, `robots.txt`, balises Open Graph / X et `hreflang` FR ↔ EN
 - Hébergé sur Cloudflare (Workers avec assets, sans build) ; domaine chez OVHcloud, DNS sur Cloudflare
 - Configuration : `wrangler.jsonc` (assets = racine, `404.html` en page 404) et `.assetsignore` (fichiers non déployés : docs, `.github`, `.claude`…). Aperçus par branche via `wrangler preview`
