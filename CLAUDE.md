@@ -11,7 +11,7 @@ Site perso statique (HTML/CSS vanilla, hébergé sur Cloudflare Workers avec ass
 ## Mesure d'audience
 
 - Cloudflare Web Analytics : sans cookie, sans stockage dans le navigateur, sans suivi entre sites, statistiques agrégées seulement. Texte correspondant dans `mentions-legales.html` (section « Données personnelles »).
-- Script : **pas encore en place, en attente du token** du site (Cloudflare > Analytics & Logs > Web Analytics > installation manuelle). Cloudflare ne l'injecte pas tout seul sur des fichiers statiques sur Workers. Une fois le token donné : `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TOKEN"}'></script>` juste avant `</body>` de `index.html`, `en/index.html`, `cv/index.html`, `en/cv/index.html` et `mentions-legales.html` (`404.html` n'a aucun script).
+- Script : `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "…"}'></script>` juste avant `</body>` de `index.html`, `en/index.html`, `cv/index.html`, `en/cv/index.html` et `mentions-legales.html` (`404.html` n'a aucun script). Cloudflare ne l'injecte pas tout seul sur des fichiers statiques sur Workers : le site est réglé sur « Enable with JS Snippet installation » (pas « excluding visitor data in the EU », qui exclurait les visiteurs européens). Token visible dans le code source, ce n'est pas un secret.
 - Pas de CSP aujourd'hui (aucun `_headers`), donc rien à autoriser. Si une CSP est un jour ajoutée, y ajouter exactement `script-src https://static.cloudflareinsights.com` et `connect-src https://cloudflareinsights.com`, rien d'autre.
 - Si l'outil change ou disparaît, mettre à jour ensemble la CSP (si elle existe), les mentions légales et le README.
 
