@@ -1,4 +1,4 @@
-/* VincenTimes : petits automatismes (seul script du site, aucune ressource tierce).
+/* VincenTimes : petits automatismes (seul script maison du site, aucune ressource tierce).
    Sans JavaScript, les valeurs écrites en dur dans les pages restent affichées. */
 (function () {
   var now = new Date();
