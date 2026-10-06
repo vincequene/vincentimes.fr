@@ -17,10 +17,7 @@ Site perso statique (HTML/CSS vanilla, hébergé sur Cloudflare Workers avec ass
 
 ## Pull requests
 
-- Toujours mettre les captures des rendus dans la description de la PR : accueil ordi et mobile au minimum, plus les zones modifiées (états de survol compris si ça bouge).
-- Les captures vont dans `.github/pr-screens/` sur la branche de la PR, en JPEG (GIF court si c'est animé) pour rester léger.
-- Les lier en `https://github.com/vincequene/vincentimes.fr/blob/<sha>/.github/pr-screens/<fichier>?raw=true` avec le SHA du commit qui les contient.
-- **Avant de fusionner**, retirer `.github/pr-screens/` par un dernier commit : `main` n'accumule pas les captures, et les liens restent valides car ils pointent vers un commit précis.
+- Pas de captures d'écran dans les PR : l'aperçu Cloudflare de la branche suffit pour voir le rendu.
 
 ## CV
 
