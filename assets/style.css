@@ -603,6 +603,8 @@ a.sketch:active { transform: scale(0.97); }
 .pro-text { display: flex; flex-direction: column; min-width: 0; }
 .pro-name { font-size: 1.4rem; line-height: 1.15; }
 .pro-desc { font-size: 1.05rem; color: var(--ink-soft); }
+.pro .arrow { margin-left: auto; font-size: 1.3rem; }
+.pro:hover .arrow { transform: translate(3px, -3px); }
 
 /* ---------- Réseaux ---------- */
 
