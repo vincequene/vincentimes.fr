@@ -119,17 +119,18 @@ body::before {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(28px, 28px, 0); }
 }
-/* Grain par-dessus tout le fond */
+/* Grain par-dessus tout le fond. Teinté d'avance (jaune pâle) au lieu d'un
+   mix-blend-mode: soft-light : même rendu, mais plus de fusion plein écran
+   à recalculer à chaque image au-dessus de la trame animée (lourd sous Safari). */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: var(--grain);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.863 0 0 0 0 0.151 0 0 0 -1.6 1.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 140px 140px;
   opacity: 0.5;
-  mix-blend-mode: soft-light;
 }
 
 a { color: inherit; }
@@ -167,17 +168,12 @@ a { color: inherit; }
   .cloud-1 { top: 0.6rem; left: 0.6rem; width: 66px; }
   .cloud-2 { top: 4.2rem; right: 0.8rem; width: 54px; }
 }
-.doodle .float { animation: float 7s ease-in-out infinite; transform-origin: center; }
-.cloud-2 .float { animation-duration: 9s; animation-delay: -3s; }
-.cloud-3 .float { animation-duration: 8s; animation-delay: -1s; }
-.cloud-4 .float { animation-duration: 10s; animation-delay: -5s; }
-.cloud-5 .float { animation-duration: 6s; animation-delay: -2s; }
-@keyframes float { 50% { transform: translate(8px, -5px); } }
-
 /* Les nuages traversent l'écran lentement : ils apparaissent en fondu d'un
    côté, dérivent, disparaissent de l'autre, puis reviennent. Délais négatifs
    pour qu'ils soient déjà en route au chargement. Sans animation (réglage
-   « réduire les animations »), ils restent à leur place d'origine. */
+   « réduire les animations »), ils restent à leur place d'origine.
+   Seul le <svg> bouge (transform/opacity, calculé par la carte graphique) :
+   le dessin filtré au crayon n'est peint qu'une fois. */
 @media (prefers-reduced-motion: no-preference) {
   .cloud-1, .cloud-2, .cloud-3, .cloud-4, .cloud-5 { left: 0; right: auto; }
   .cloud-3, .cloud-4, .cloud-5 { display: block; }
@@ -373,19 +369,21 @@ a.sketch:active { transform: scale(0.97); }
   letter-spacing: 0.12em;
   fill: var(--ink);
 }
-/* Faux fixe (line boil) : le texte du badge frémit image par image,
-   ~8 images/s, en alternant trois tremblés de bruit différent */
+/* Faux fixe (line boil) : au survol, le texte du badge frémit image par
+   image, ~8 images/s, en alternant trois tremblés de bruit différent.
+   Seulement au survol : en continu, chaque image relançait les filtres SVG
+   (très lourd sous Safari). */
 @media (prefers-reduced-motion: no-preference) {
-  .avatar-ring text { animation: boil 0.375s steps(1, end) infinite; }
+  .avatar:hover .avatar-ring text { animation: boil 0.375s steps(1, end) infinite; }
 }
 @keyframes boil {
   0%      { filter: url(#boil-1); }
   33.33%  { filter: url(#boil-2); }
   66.66%  { filter: url(#boil-3); }
 }
-/* Faux fixe du logo VincenTimes */
+/* Faux fixe du logo VincenTimes, au survol de l'en-tête */
 @media (prefers-reduced-motion: no-preference) {
-  .hero .logo { animation: boil-logo 0.75s steps(1, end) infinite; }  /* ~4 images/s, plus posé que le badge */
+  .hero:hover .logo { animation: boil-logo 0.75s steps(1, end) infinite; }  /* ~4 images/s, plus posé que le badge */
 }
 @keyframes boil-logo {
   0%      { filter: url(#boil-logo-1); }
@@ -426,23 +424,12 @@ a.sketch:active { transform: scale(0.97); }
   padding: clamp(1.6rem, 5vw, 2.3rem);
   color: #fff;
 }
-/* Écart de l'aberration chromatique (trame + titre). Déclaré pour pouvoir
-   l'animer : au survol, la trame et le logo se décalent ensemble. */
-@property --ab {
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 1;
-}
+/* Écart de l'aberration chromatique (trame + titre) : au survol, la trame et
+   le logo se décalent ensemble, d'un coup ; retour sec quand on sort. Plus
+   d'animation de l'écart lui-même : elle repeignait toute la carte (filtre
+   SVG compris) 8 fois par seconde. Le titre, lui, tremble toujours. */
 .feature { --ab: 1; }
-/* Au survol : le décalage « bouillonne » image par image (sur les deux,
-   ~8 images/s), comme une anim tradi ; retour sec quand on sort. */
-.feature:hover { --ab: 1.8; animation: aberrate 0.5s steps(1, end) infinite; }
-@keyframes aberrate {
-  0%   { --ab: 1.8; }
-  25%  { --ab: 2.6; }
-  50%  { --ab: 1.3; }
-  75%  { --ab: 2.2; }
-}
+.feature:hover { --ab: 1.8; }
 
 /* Trame imprimée en trois passes mal repérées : rose, cyan, vert */
 .feature::before {
@@ -793,7 +780,7 @@ a.sketch:active { transform: scale(0.97); }
 
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
-    animation: boing 0.7s var(--pop) both;
+    animation: boing 0.7s var(--pop) backwards;  /* pas « both » : aucun calque gardé une fois fini */
     animation-delay: calc(var(--i, 0) * 90ms);
   }
   @keyframes boing {
